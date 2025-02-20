@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaPrint - 3D Prints</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="hero">
+            <h1>Welcome to NovaPrint</h1>
+            <p>Bring your ideas to life with cutting-edge 3D printing technology.</p>
+            <a href="#about" class="cta-button">Discover More</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About NovaPrint</h2>
+        <p>At NovaPrint, we take pride in offering exceptional 3D printing services tailored to your needs. Whether it's functional prototypes or artistic creations, we guarantee the highest quality and precision.</p>
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="service-card">
+            <h3>Prototyping</h3>
+            <p>We help businesses create functional prototypes to test ideas before going into production.</p>
+        </div>
+        <div class="service-card">
+            <h3>Custom Designs</h3>
+            <p>From personalized gifts to custom-built objects, we bring your visions to life.</p>
+        </div>
+        <div class="service-card">
+            <h3>Artistic Prints</h3>
+            <p>Let us create unique, artistic 3D prints for display or special occasions.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Get in touch with us to discuss your project or ask questions!</p>
+        <a href="mailto:3dprintingnova@gmail.com" class="cta-button">Email Us</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 NovaPrint. All rights reserved.</p>
+    </footer>
+
+    <!-- Smooth Scroll Script -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

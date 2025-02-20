@@ -1,0 +1,250 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fb;
+    color: #333;
+    scroll-behavior: smooth; /* Ensures smooth scrolling on all browsers */
+}
+
+/* Header Styling */
+header {
+    background-color: #0a192f;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #f7b500;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #00aaff, #005f73);
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-bottom: 3px solid #f7b500;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    animation: fadeIn 2s ease-out;
+}
+
+.hero p {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    animation: fadeIn 3s ease-out;
+}
+
+.cta-button {
+    background-color: #f7b500;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #e68a00;
+}
+
+/* About Section */
+#about {
+    background-color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#about h2 {
+    font-size: 2.8rem;
+    color: #0a192f;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+#about p {
+    font-size: 1.25rem;
+    color: #555;
+    line-height: 1.8;
+    margin-top: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Services Section */
+#services {
+    background-color: #f4f7fb;
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+#services h2 {
+    font-size: 2.8rem;
+    color: #0a192f;
+    margin-bottom: 30px;
+}
+
+.service-card {
+    background-color: white;
+    padding: 30px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: calc(33% - 40px);
+    text-align: left;
+}
+
+.service-card h3 {
+    font-size: 1.8rem;
+    color: #0a192f;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Testimonials Section */
+#testimonials {
+    background-color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+#testimonials h2 {
+    font-size: 2.8rem;
+    color: #0a192f;
+    margin-bottom: 30px;
+}
+
+.testimonial-card {
+    background-color: #f4f7fb;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: calc(50% - 40px);
+}
+
+.testimonial-card p {
+    font-size: 1.25rem;
+    color: #555;
+    font-style: italic;
+}
+
+.testimonial-card p:first-child {
+    font-weight: bold;
+}
+
+/* Contact Section */
+#contact {
+    background-color: #f4f7fb;
+    padding: 60px 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#contact h2 {
+    font-size: 2.8rem;
+    color: #0a192f;
+    margin-bottom: 30px;
+}
+
+#contact p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #0a192f;
+    color: white;
+    font-size: 1rem;
+    margin-top: 50px;
+}
+
+footer p {
+    letter-spacing: 1px;
+}
+
+/* Animation Effects */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-card,
+    .testimonial-card {
+        width: calc(100% - 40px);
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav ul li a {
+        font-size: 1.1rem;
+    }
+
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1.1rem;
+    }
+}
