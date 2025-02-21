@@ -5,17 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaPrint - Items</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        main {
+            padding: 20px;
+        }
+        .items-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+        }
+        .item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <header>
+        <h1>Our 3D Prints</h1>
         <nav>
-            <ul>
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="items.html">Items</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="items.html">Items</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
@@ -27,7 +76,8 @@
             <!-- Example Item (You can copy and edit this to add more) -->
             <div class="item">
                 <img src="example-item.jpg" alt="3D Print Example">
-                <p>Item Name - $Price</p>
+                <h3>Item Name</h3>
+                <p>$Price</p>
             </div>
             
             <!-- Add more items here manually -->
