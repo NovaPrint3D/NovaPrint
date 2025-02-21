@@ -10,49 +10,76 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #ececec;
             text-align: center;
         }
         header {
-            background-color: #333;
+            background-color: #222;
             color: white;
-            padding: 15px 0;
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        nav {
+            margin-top: 10px;
         }
         nav a {
             color: white;
-            margin: 0 15px;
+            margin: 0 20px;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #f4a261;
         }
         main {
-            padding: 20px;
+            padding: 40px 20px;
+        }
+        h2 {
+            color: #333;
         }
         .items-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 30px;
             padding: 20px;
         }
         .item {
             background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 250px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 280px;
             text-align: center;
+            transition: transform 0.3s;
+        }
+        .item:hover {
+            transform: scale(1.05);
         }
         .item img {
             width: 100%;
             border-radius: 10px;
         }
+        .item h3 {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #222;
+        }
+        .item p {
+            font-size: 1.1em;
+            color: #f4a261;
+            font-weight: bold;
+        }
         footer {
-            background-color: #333;
+            background-color: #222;
             color: white;
-            padding: 10px;
+            padding: 15px;
             position: relative;
             bottom: 0;
             width: 100%;
+            margin-top: 40px;
+            font-size: 0.9em;
         }
     </style>
 </head>
@@ -70,7 +97,7 @@
 
     <main>
         <h2>Available Prints</h2>
-        <p>Here are some of our latest 3D printed items.</p>
+        <p>Browse our latest 3D printed creations.</p>
 
         <div class="items-container">
             <!-- Example Item (You can copy and edit this to add more) -->
