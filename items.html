@@ -140,9 +140,7 @@
 
         function sendEmail(event) {
             event.preventDefault();
-            const userEmail = document.getElementById("email").value;
-            const userName = document.getElementById("name").value;
-            let emailBody = `Name: ${userName}\nEmail: ${userEmail}\n\n`;
+            let emailBody = "3D Print Request:\n\n";
             
             document.querySelectorAll(".print-request").forEach(print => {
                 const material = print.querySelector(".material-select").value;
@@ -150,7 +148,7 @@
                 const quantity = print.querySelector("input[name='quantity']").value;
                 const itemName = print.querySelector("input[name='itemName']").value;
                 
-                emailBody += `Material: ${material}\nColor: ${color}\nQuantity: ${quantity}\nItem Name: ${itemName}\n`;
+                emailBody += `Item: ${itemName}\nMaterial: ${material}\nColor: ${color}\nQuantity: ${quantity}\n`;
                 
                 if (print.querySelector(".multi-part-checkbox").checked) {
                     emailBody += "Parts:\n";
