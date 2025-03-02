@@ -107,7 +107,7 @@
                 const quantity = print.querySelector("input[name='quantity']").value;
                 const itemName = print.querySelector("input[name='itemName']").value;
                 
-                emailBody += `${material}:${color}:${quantity}:${itemName}\n`;
+                emailBody += `Material: ${material}\nColor: ${color}\nQuantity: ${quantity}\nItem Name: ${itemName}\n\n`;
             });
             
             const subject = encodeURIComponent("3D Print Request");
