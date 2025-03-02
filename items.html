@@ -26,37 +26,27 @@
             <div class="container">
                 <h2>Custom 3D Print Request</h2>
                 <p>Submit your custom 3D print request below:</p>
-                <form action="mailto:3dprintingnova@gmail.com" method="post" enctype="text/plain">
+                <form id="printRequestForm" onsubmit="sendEmail(event)">
                     <label for="name">Your Name:</label>
                     <input type="text" id="name" name="name" required>
 
                     <label for="email">Your Email:</label>
                     <input type="email" id="email" name="email" required>
 
-                    <label for="request">Custom Print Request:</label>
-                    <textarea id="request" name="request" rows="5" required></textarea>
+                    <label for="material">Select Material:</label>
+                    <select id="material" name="material" onchange="updateColors()">
+                        <option value="PLA">PLA</option>
+                        <option value="ABS">ABS</option>
+                        <option value="TPU">TPU</option>
+                    </select>
 
                     <label for="color">Select Color:</label>
                     <select id="color" name="color">
-                        <optgroup label="PLA">
-                            <option value="Black">Black</option>
-                            <option value="White">White</option>
-                            <option value="Red">Red</option>
-                            <option value="Blue">Blue</option>
-                            <option value="Purple">Purple</option>
-                            <option value="Yellow">Yellow</option>
-                            <option value="Green">Green</option>
-                            <option value="Marble">Marble</option>
-                            <option value="Orange">Orange</option>
-                        </optgroup>
-                        <optgroup label="ABS">
-                            <option value="Yellow">Yellow</option>
-                            <option value="Green">Green</option>
-                        </optgroup>
-                        <optgroup label="TPU">
-                            <option value="Translucent Red">Translucent Red</option>
-                        </optgroup>
+                        <!-- Colors will be dynamically updated -->
                     </select>
+
+                    <label for="itemName">Item Name:</label>
+                    <input type="text" id="itemName" name="itemName" required>
 
                     <button type="submit">Send Request</button>
                 </form>
@@ -69,5 +59,42 @@
             <p>&copy; 2025 NovaPrint. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const colorOptions = {
+            "PLA": ["Black", "White", "Red", "Blue", "Purple", "Yellow", "Green", "Marble", "Orange"],
+            "ABS": ["Yellow", "Green"],
+            "TPU": ["Translucent Red"]
+        };
+
+        function updateColors() {
+            const material = document.getElementById("material").value;
+            const colorSelect = document.getElementById("color");
+            colorSelect.innerHTML = "";
+
+            colorOptions[material].forEach(color => {
+                const option = document.createElement("option");
+                option.value = color;
+                option.textContent = color;
+                colorSelect.appendChild(option);
+            });
+        }
+
+        function sendEmail(event) {
+            event.preventDefault();
+            const material = document.getElementById("material").value;
+            const color = document.getElementById("color").value;
+            const itemName = document.getElementById("itemName").value;
+            const userEmail = document.getElementById("email").value;
+            const userName = document.getElementById("name").value;
+            
+            const subject = encodeURIComponent("3D Print Request");
+            const body = encodeURIComponent(`${material}:${color}:${itemName}\n\nName: ${userName}\nEmail: ${userEmail}`);
+            
+            window.location.href = `mailto:3dprintingnova@gmail.com?subject=${subject}&body=${body}`;
+        }
+
+        document.addEventListener("DOMContentLoaded", updateColors);
+    </script>
 </body>
 </html>
