@@ -36,17 +36,30 @@
                     <label for="request">Custom Print Request:</label>
                     <textarea id="request" name="request" rows="5" required></textarea>
 
+                    <label for="color">Select Color:</label>
+                    <select id="color" name="color">
+                        <optgroup label="PLA">
+                            <option value="Black">Black</option>
+                            <option value="White">White</option>
+                            <option value="Red">Red</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Purple">Purple</option>
+                            <option value="Yellow">Yellow</option>
+                            <option value="Green">Green</option>
+                            <option value="Marble">Marble</option>
+                            <option value="Orange">Orange</option>
+                        </optgroup>
+                        <optgroup label="ABS">
+                            <option value="Yellow">Yellow</option>
+                            <option value="Green">Green</option>
+                        </optgroup>
+                        <optgroup label="TPU">
+                            <option value="Translucent Red">Translucent Red</option>
+                        </optgroup>
+                    </select>
+
                     <button type="submit">Send Request</button>
                 </form>
-                <div class="material-options">
-                    <h3>Available Colors:</h3>
-                    <h4>PLA:</h4>
-                    <p>Black, White, Red, Blue, Purple, Yellow, Green, Marble, Orange</p>
-                    <h4>ABS:</h4>
-                    <p>Yellow, Green</p>
-                    <h4>Tau:</h4>
-                    <p>Translucent Red</p>
-                </div>
             </div>
         </section>
     </main>
