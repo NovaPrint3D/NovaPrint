@@ -24,30 +24,28 @@
     <main>
         <section class="section">
             <div class="container">
-                <h2>Shop Our 3D Prints</h2>
-                <p>Discover high-quality 3D printed designs available for purchase.</p>
-                <div class="items-grid">
-                    <div class="item">
-                        <a href="item-details.html?item=1">
-                            <img src="placeholder.jpg" alt="3D Printed Item">
-                            <h3>Item Name</h3>
-                            <p>$XX.XX</p>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="item-details.html?item=2">
-                            <img src="placeholder.jpg" alt="3D Printed Item">
-                            <h3>Item Name</h3>
-                            <p>$XX.XX</p>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="item-details.html?item=3">
-                            <img src="placeholder.jpg" alt="3D Printed Item">
-                            <h3>Item Name</h3>
-                            <p>$XX.XX</p>
-                        </a>
-                    </div>
+                <h2>Custom 3D Print Request</h2>
+                <p>Submit your custom 3D print request below:</p>
+                <form action="mailto:3dprintingnova@gmail.com" method="post" enctype="text/plain">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="request">Custom Print Request:</label>
+                    <textarea id="request" name="request" rows="5" required></textarea>
+
+                    <button type="submit">Send Request</button>
+                </form>
+                <div class="material-options">
+                    <h3>Available Colors:</h3>
+                    <h4>PLA:</h4>
+                    <p>Black, White, Red, Blue, Purple, Yellow, Green, Marble, Orange</p>
+                    <h4>ABS:</h4>
+                    <p>Yellow, Green</p>
+                    <h4>Tau:</h4>
+                    <p>Translucent Red</p>
                 </div>
             </div>
         </section>
