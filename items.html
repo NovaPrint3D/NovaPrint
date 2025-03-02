@@ -5,41 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaPrint - Items</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .print-request {
-            background: #f8f9fa;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .print-request label {
-            font-weight: bold;
-            display: block;
-            margin-top: 10px;
-        }
-        .print-request input, .print-request select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        button {
-            background: #007bff;
-            color: #fff;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        button:hover {
-            background: #0056b3;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -62,16 +27,7 @@
                 <h2>Custom 3D Print Request</h2>
                 <p>Submit your custom 3D print request below:</p>
                 <form id="printRequestForm" onsubmit="sendEmail(event)">
-                    <div id="printRequests">
-                        <div class="print-request">
-                            <label for="name">Your Name:</label>
-                            <input type="text" id="name" name="name" required>
-
-                            <label for="email">Your Email:</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                    </div>
-                    
+                    <div id="printRequests"></div>
                     <button type="button" onclick="addPrintRequest()">Add Another Print</button>
                     <button type="submit">Send Request</button>
                 </form>
@@ -105,29 +61,81 @@
             });
         }
 
+        function addPartOptions(partsContainer) {
+            const div = document.createElement("div");
+            div.classList.add("part-request");
+            div.innerHTML = `
+                <label>Part Name:</label>
+                <input type="text" name="partName" required>
+                
+                <label>Select Material:</label>
+                <select class="material-select" name="partMaterial" onchange="updateColors(this)">
+                    <option value="PLA">PLA</option>
+                    <option value="ABS">ABS</option>
+                    <option value="TPU">TPU</option>
+                </select>
+                
+                <label>Select Color:</label>
+                <select class="color-select" name="partColor"></select>
+                
+                <button type="button" onclick="removeElement(this)">Remove Part</button>
+            `;
+            partsContainer.appendChild(div);
+            updateColors(div.querySelector(".material-select"));
+        }
+
         function addPrintRequest() {
             const printRequestsDiv = document.getElementById("printRequests");
             const div = document.createElement("div");
             div.classList.add("print-request");
             div.innerHTML = `
-                <label for="material">Select Material:</label>
+                <label>Select Material:</label>
                 <select class="material-select" name="material" onchange="updateColors(this)">
                     <option value="PLA">PLA</option>
                     <option value="ABS">ABS</option>
                     <option value="TPU">TPU</option>
                 </select>
                 
-                <label for="color">Select Color:</label>
+                <label>Select Color:</label>
                 <select class="color-select" name="color"></select>
                 
-                <label for="quantity">Quantity:</label>
+                <label>Quantity:</label>
                 <input type="number" name="quantity" min="1" value="1" required>
                 
-                <label for="itemName">Item Name:</label>
+                <label>Item Name:</label>
                 <input type="text" name="itemName" required>
+                
+                <label>
+                    <input type="checkbox" class="multi-part-checkbox"> Does this item have multiple parts?
+                </label>
+                
+                <div class="parts-container"></div>
+                <button type="button" class="add-part-button" style="display: none;">Add Part</button>
+                <button type="button" onclick="removeElement(this)">Remove Item</button>
             `;
             printRequestsDiv.appendChild(div);
             updateColors(div.querySelector(".material-select"));
+            
+            const checkbox = div.querySelector(".multi-part-checkbox");
+            const addPartButton = div.querySelector(".add-part-button");
+            const partsContainer = div.querySelector(".parts-container");
+            
+            checkbox.addEventListener("change", function() {
+                if (checkbox.checked) {
+                    addPartButton.style.display = "block";
+                } else {
+                    addPartButton.style.display = "none";
+                    partsContainer.innerHTML = "";
+                }
+            });
+            
+            addPartButton.addEventListener("click", function() {
+                addPartOptions(partsContainer);
+            });
+        }
+
+        function removeElement(button) {
+            button.parentElement.remove();
         }
 
         function sendEmail(event) {
@@ -142,7 +150,18 @@
                 const quantity = print.querySelector("input[name='quantity']").value;
                 const itemName = print.querySelector("input[name='itemName']").value;
                 
-                emailBody += `Material: ${material}\nColor: ${color}\nQuantity: ${quantity}\nItem Name: ${itemName}\n\n`;
+                emailBody += `Material: ${material}\nColor: ${color}\nQuantity: ${quantity}\nItem Name: ${itemName}\n`;
+                
+                if (print.querySelector(".multi-part-checkbox").checked) {
+                    emailBody += "Parts:\n";
+                    print.querySelectorAll(".part-request").forEach(part => {
+                        const partMaterial = part.querySelector(".material-select").value;
+                        const partColor = part.querySelector(".color-select").value;
+                        const partName = part.querySelector("input[name='partName']").value;
+                        emailBody += `    - ${partName}: ${partMaterial} - ${partColor}\n`;
+                    });
+                }
+                emailBody += "\n";
             });
             
             const subject = encodeURIComponent("3D Print Request");
@@ -150,7 +169,7 @@
             
             window.location.href = `mailto:3dprintingnova@gmail.com?subject=${subject}&body=${body}`;
         }
-        
+
         document.addEventListener("DOMContentLoaded", () => {
             addPrintRequest();
         });
